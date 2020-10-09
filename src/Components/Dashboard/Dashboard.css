@@ -1,0 +1,43 @@
+.Dashboard {
+    width: 90vw;
+    margin-left: 10vw;
+}
+
+.dashboard-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.search-posts {
+    background-color: #fff;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    box-shadow: 0 0 3px 2px rgba(0,0,0, 0.2);
+    border-radius: 5px;
+}
+
+.search-input {
+    margin-left: 20px;
+}
+
+.search-input input {
+    width: 500px;
+    height: 25px;
+}
+
+.search-input button {
+    height: 30px;
+    cursor: pointer;
+}
+
+.posts-checked {
+    display: flex;
+    margin-right: 20px;
+}
+
+.posts-checked input {
+    margin-left: 10px;
+}

@@ -2,10 +2,12 @@
    background-image: linear-gradient(150deg,#ff70a6,#ff9770 50%,#ffd670 73%,#e9ff70);
    width: 10vw;
    height: 100vw;
+   position: fixed;
+   top: 0;
+   left: 0;
 }
 
 .nav-wrapper {
-    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +18,7 @@
 .nav-wrapper img {
     width: 120px;
     height: 120px;
+    border-radius: 50%;
 }
 
 .nav-wrapper a {
