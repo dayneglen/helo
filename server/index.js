@@ -3,6 +3,7 @@ const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
       { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
+      postCtrl = require('./controllers/postController'),
       authCtrl = require('./controllers/authController');
 
 const app = express();
@@ -29,6 +30,9 @@ massive({
 app.post('/api/register', authCtrl.register);
 app.post('/api/login', authCtrl.login);
 app.get('/api/logout', authCtrl.logout);
+
+//Posts endpoints
+app.get('/api/posts/:id', postCtrl.getAllPosts);
 
 
 

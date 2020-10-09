@@ -10,7 +10,7 @@ CREATE TABLE posts (
     title VARCHAR(45),
     img TEXT,
     content TEXT,
-    author_id INT REFERENCES users(user_id)
+    user_id INT REFERENCES users(user_id)
 );
 
 -- Altering users password from VARCHAR(20) to text
