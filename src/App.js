@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import Nav from './Components/Nav/Nav';
 import routes from './routes';
 import './reset.css';
 import './App.css';
 
 class App extends Component {
-  // const { pathname } = props.location;
-
   render() {
-
+    const { pathname } = this.props.location;
     return (
       <div className="App">
-        <Nav/>
+        { pathname === '/' 
+        ? null
+          : <Nav />
+          }
         {routes}
       </div>
     );
@@ -19,4 +21,4 @@ class App extends Component {
   
 }
 
-export default App;
+export default withRouter(App);

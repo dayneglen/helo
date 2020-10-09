@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     constructor() {
@@ -10,13 +11,21 @@ class Dashboard extends Component {
         }
     }
 
+    componentDidMount() {
+        if(!this.props.user.username) {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         return (
-            <div>
+            <div className = 'Dashboard'>
 
             </div>
         )
     }
 }
 
-export default Dashboard;
+const mapStateToProps = reduxStore => reduxStore;
+
+export default connect(mapStateToProps)(Dashboard);

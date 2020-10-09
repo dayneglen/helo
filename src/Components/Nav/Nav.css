@@ -1,0 +1,50 @@
+.Nav {
+   background-image: linear-gradient(150deg,#ff70a6,#ff9770 50%,#ffd670 73%,#e9ff70);
+   width: 10vw;
+   height: 100vw;
+}
+
+.nav-wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.nav-wrapper img {
+    width: 120px;
+    height: 120px;
+}
+
+.nav-wrapper a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.nav-wrapper nav {
+    margin-top: -200px;
+    display: flex;
+    flex-direction: column;
+    height: 7vh;
+    justify-content: space-between;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    height: 17vh;
+    justify-content: space-between;
+}
+
+.user-info h3 {
+    color: white;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+.logout  {
+    margin-bottom: 20px;
+}

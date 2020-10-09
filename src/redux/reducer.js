@@ -12,11 +12,19 @@ export function getUser(userObj) {
     }
 }
 
+export function clearUser() {
+    return {
+        type: CLEAR_USER,
+        payload: {}
+    }
+}
 export default function userReducer (state = initialState, action){
     const { type, payload } = action;
     switch (type) {
         case GET_USER:
             return {...state, user: payload};
+        case CLEAR_USER:
+            return {...state, user: payload}
         default:
             return state;
     }
