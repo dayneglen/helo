@@ -44,7 +44,6 @@ class Dashboard extends Component {
 
     render() {
         const posts = this.state.posts.map((post, i) => {
-            console.log(post)
             return (
                 <Link key={i} to={`/post/${post.post_id}`} className='post-link'>
                     <section className='show-post'>

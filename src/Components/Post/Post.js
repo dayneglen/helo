@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import './Post.css';
 
@@ -32,10 +33,16 @@ class Post extends Component {
         }).catch(err => console.log(err))
     }
 
-    
+    deletePost = () => {
+        const { id } = this.props.match.params;
+        axios.delete(`/api/post/${id}`).then(() => {
+            this.props.history.push('/');
+        }).catch(err => console.log(err));
+    }
+
 
     render(){
-        console.log(this.props.match.params.id)
+        console.log(this.props)
         const {title, img, content, author, authorPicture} = this.state;
         console.log(authorPicture)
         return(
@@ -52,6 +59,10 @@ class Post extends Component {
                         <h6>{author}</h6>
                         <img className='profile-pic' src={authorPicture} alt={author} />
                     </section>
+                    {(this.state.author === this.props.user.username) 
+                    ? <button className='delete-btn' onClick={this.deletePost}>Delete</button>
+                    : null}
+                    
                 </section>
                 
             </div>
@@ -59,4 +70,6 @@ class Post extends Component {
     }
 }
 
-export default Post
+const mapStateToProps = reduxState => reduxState;
+
+export default connect(mapStateToProps)(Post);

@@ -29,5 +29,22 @@ module.exports = {
         const db = req.app.get('db');
         const post = await db.posts.get_post(id);
         res.status(200).send(post[0]);
+    },
+    addPost: (req, res) => {
+        const id = +req.params.id,
+              { title, img, content } = req.body,
+              db = req.app.get('db');
+        
+        db.posts.add_post({title, img, content, id}).then(() => {
+            res.sendStatus(200);
+        }).catch(err => console.log(err));
+    },
+    deletePost: (req, res) => {
+        const id  = +req.params.id,
+            db = req.app.get('db');
+        
+        db.posts.delete_post([id]).then(() => {
+            res.sendStatus(200);
+        }).catch(err => console.log(err));
     }
 }
