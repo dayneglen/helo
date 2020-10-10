@@ -33,6 +33,7 @@ app.get('/api/logout', authCtrl.logout);
 
 //Posts endpoints
 app.get('/api/posts/:id', postCtrl.getAllPosts);
+app.get('/api/post/:id', postCtrl.getPost);
 
 
 

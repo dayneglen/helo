@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Dashboard.css';
 
@@ -42,15 +43,22 @@ class Dashboard extends Component {
     }
 
     render() {
-        const posts = this.state.posts.map((post, i) => (
-            <section key={i} className='show-post'>
-                <h2>{post.title}</h2>
-                <section className='username-img'>
-                    <p>by {post.username}</p>
-                    <img src={post.profile_pic} alt={post.username} />
-                </section>
-            </section>
-        ))
+        const posts = this.state.posts.map((post, i) => {
+            console.log(post)
+            return (
+                <Link key={i} to={`/post/${post.post_id}`} className='post-link'>
+                    <section className='show-post'>
+                        <h2>{post.title}</h2>
+                        <section className='username-img'>
+                            <p>by {post.username}</p>
+                            <img src={post.profile_pic} alt={post.username} />
+                        </section>
+                    </section>
+                </Link>
+            )
+            
+            
+        })
         return (
             <div className='Dashboard'>
                 <section className='dashboard-container'>

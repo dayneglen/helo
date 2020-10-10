@@ -23,6 +23,11 @@ module.exports = {
             const searchedPosts = posts.filter(post => post.title.includes(search) && post.user_id !== id);
             res.status(200).send(searchedPosts);
         }
-
+    },
+    getPost: async (req, res) => {
+        const id = +req.params.id;
+        const db = req.app.get('db');
+        const post = await db.posts.get_post(id);
+        res.status(200).send(post[0]);
     }
 }
