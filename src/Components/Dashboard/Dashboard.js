@@ -14,7 +14,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        if(!this.props.user.username) {
+        if (!this.props.user.username) {
             this.props.history.push('/');
         }
 
@@ -23,23 +23,22 @@ class Dashboard extends Component {
 
     getPosts = () => {
         const { search, userPosts } = this.state;
-        axios.get(`/api/posts/${this.props.user.user_id}`, {search, userPosts}).then(res => {
-            this.setState({posts: res.data});
+        axios.get(`/api/posts/${this.props.user.user_id}?search=${search}&userPosts=${userPosts}`).then(res => {
+            this.setState({ posts: res.data });
         }).catch(err => console.log(err));
     }
 
     handleChange = e => {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     handleCheck = e => {
-        this.setState({ userPosts: e.target.checked})
+        this.setState({ userPosts: e.target.checked })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.getPosts();
-        console.log(this.props.history)
     }
 
     render() {
@@ -69,8 +68,8 @@ class Dashboard extends Component {
                     <section className='display-post-container'>
                         {posts}
                     </section>
-                    
-                </section> 
+
+                </section>
             </div>
         )
     }

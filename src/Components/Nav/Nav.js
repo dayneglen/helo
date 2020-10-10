@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -14,7 +14,7 @@ class Nav extends Component {
         })
     }
 
-    render(){
+    render() {
         return (
             <div className='Nav'>
                 <section className='nav-wrapper'>
