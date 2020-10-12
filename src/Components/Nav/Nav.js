@@ -2,16 +2,27 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { clearUser } from '../../redux/reducer';
+import { clearUser, getUser } from '../../redux/reducer';
 import axios from 'axios';
 import './Nav.css';
 
 class Nav extends Component {
+
+    // componentDidMount() {
+    //      this.findUser(); 
+    // }
+    
     logout = () => {
         axios.get('/api/logout').then(() => {
             this.props.clearUser();
             this.props.history.push('/');
         })
+    }
+
+    findUser = () => {
+        axios.get('/api/me').then(res => {
+            this.props.getUser(res.data);
+        }).catch(err => console.log(err));
     }
 
     render() {
@@ -38,4 +49,4 @@ class Nav extends Component {
 
 const mapStateToProps = reduxState => reduxState;
 
-export default withRouter(connect(mapStateToProps, { clearUser })(Nav));
+export default withRouter(connect(mapStateToProps, { getUser, clearUser })(Nav));

@@ -30,11 +30,12 @@ massive({
 app.post('/api/register', authCtrl.register);
 app.post('/api/login', authCtrl.login);
 app.get('/api/logout', authCtrl.logout);
+app.get('/api/me', authCtrl.findUser);
 
 //Posts endpoints
-app.get('/api/posts/:id', postCtrl.getAllPosts);
+app.get('/api/posts', postCtrl.getAllPosts);
 app.get('/api/post/:id', postCtrl.getPost);
-app.post('/api/post/:id', postCtrl.addPost);
+app.post('/api/post', postCtrl.addPost);
 app.delete(`/api/post/:id`, postCtrl.deletePost);
 
 

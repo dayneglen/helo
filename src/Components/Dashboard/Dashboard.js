@@ -15,16 +15,18 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.user.username) {
-            this.props.history.push('/');
-        }
-
         this.getPosts();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState !== this.state) {
+            this.getPosts();
+        }
     }
 
     getPosts = () => {
         const { search, userPosts } = this.state;
-        axios.get(`/api/posts/${this.props.user.user_id}?search=${search}&userPosts=${userPosts}`).then(res => {
+        axios.get(`/api/posts?search=${search}&userPosts=${userPosts}`).then(res => {
             this.setState({ posts: res.data });
         }).catch(err => console.log(err));
     }

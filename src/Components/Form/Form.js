@@ -14,11 +14,11 @@ class Form extends Component {
         }
     }
 
-    componentDidMount() {
-        if (!this.props.user.username) {
-            this.props.history.push('/');
-        }
-    }
+    // componentDidMount() {
+    //     if (!this.props.user.username) {
+    //         this.props.history.push('/');
+    //     }
+    // }
 
     componentDidUpdate(prevProps, prevState) {
         if(this.state.img !== prevState.img) {
@@ -36,14 +36,17 @@ class Form extends Component {
 
     addPost = (e) => {
         e.preventDefault();
-        const { user_id } = this.props.user;
         const { content, img, title } = this.state;
-        axios.post(`/api/post/${user_id}`, { title, img, content }).then(() => {
+        axios.post(`/api/post`, { title, img, content }).then(() => {
             this.props.history.push('/dashboard');
         }).catch(err => console.log(err));
     }
  
     render() {
+        const divBackground = {
+            backgroundImage: 'url(http://moorestown-mall.com/noimage.gif)'
+        }
+
         return (
             <main className='Form'>
                 <section className='form-container'>
@@ -51,12 +54,7 @@ class Form extends Component {
                     <form>
                         <label htmlFor='title'>Title:</label>
                         <input id='title' name='title' value={this.state.title} onChange={ (e) => this.handleChange(e)}/>
-                        <section className='img-container'>
-                            {this.state.showImage
-                            ? <img src={this.state.img} alt='user' />
-                            : <img src='http://moorestown-mall.com/noimage.gif' alt='blank' />}
-                            
-                        </section>
+                        <div className='img-container' style={divBackground}></div>
                         <label htmlFor='img'>Image URL:</label>
                         <input id='img' name='img' value={this.state.img} onChange={(e) => this.handleChange(e)} />
                         <label htmlFor='content'>Content:</label>
