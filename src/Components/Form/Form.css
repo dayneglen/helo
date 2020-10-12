@@ -61,5 +61,7 @@
 
 .img-container {
     margin: 0 auto;
+    height: 400px;
+    width: 400px;
 }
 

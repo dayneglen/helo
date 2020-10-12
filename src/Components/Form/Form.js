@@ -9,8 +9,7 @@ class Form extends Component {
         this.state = {
             title: '',
             img: '',
-            content: '',
-            showImage: false
+            content: ''
         }
     }
 
@@ -20,15 +19,6 @@ class Form extends Component {
     //     }
     // }
 
-    componentDidUpdate(prevProps, prevState) {
-        if(this.state.img !== prevState.img) {
-            if(this.state.img.includes('http')){
-                this.setState({ showImage: true })
-            } else {
-                this.setState({showImage: false})
-            }
-        }
-    }
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
@@ -43,8 +33,13 @@ class Form extends Component {
     }
  
     render() {
-        const divBackground = {
-            backgroundImage: 'url(http://moorestown-mall.com/noimage.gif)'
+        const divBackgroundBlank = {
+            backgroundImage: 'url(http://moorestown-mall.com/noimage.gif)',
+        }
+
+        const divBackgroundImage = {
+            backgroundImage: `url(${this.state.img})`,
+            backgroundSize: 'cover'
         }
 
         return (
@@ -54,7 +49,10 @@ class Form extends Component {
                     <form>
                         <label htmlFor='title'>Title:</label>
                         <input id='title' name='title' value={this.state.title} onChange={ (e) => this.handleChange(e)}/>
-                        <div className='img-container' style={divBackground}></div>
+                        {this.state.img
+                        ? <div className='img-container' style={divBackgroundImage}></div>
+                        : <div className='img-container' style={divBackgroundBlank}></div>}
+                        
                         <label htmlFor='img'>Image URL:</label>
                         <input id='img' name='img' value={this.state.img} onChange={(e) => this.handleChange(e)} />
                         <label htmlFor='content'>Content:</label>
