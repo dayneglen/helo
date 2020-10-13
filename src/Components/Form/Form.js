@@ -13,11 +13,11 @@ class Form extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     if (!this.props.user.username) {
-    //         this.props.history.push('/');
-    //     }
-    // }
+    componentDidMount() {
+        if (!this.props.user.username) {
+            this.props.history.push('/');
+        }
+    }
 
 
     handleChange = (e) => {

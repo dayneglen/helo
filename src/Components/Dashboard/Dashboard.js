@@ -19,7 +19,7 @@ class Dashboard extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState !== this.state) {
+        if (prevState.userPosts !== this.state.userPosts) {
             this.getPosts();
         }
     }
@@ -29,6 +29,12 @@ class Dashboard extends Component {
         axios.get(`/api/posts?search=${search}&userPosts=${userPosts}`).then(res => {
             this.setState({ posts: res.data });
         }).catch(err => console.log(err));
+    }
+
+    resetPosts = (e) => {
+        e.preventDefault();
+        this.setState({search: '', userPosts: true});
+        this.getPosts();
     }
 
     handleChange = e => {
@@ -67,7 +73,7 @@ class Dashboard extends Component {
                         <section className='search-input'>
                             <input value={this.state.search} name='search' placeholder='Search by Title' onChange={this.handleChange} />
                             <button onClick={this.handleSubmit} type='submit'>Search</button>
-                            <button>Reset</button>
+                            <button onClick={this.resetPosts}>Reset</button>
                         </section>
                         <section className='posts-checked'>
                             <h3>My Posts</h3>

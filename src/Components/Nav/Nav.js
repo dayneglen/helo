@@ -8,9 +8,10 @@ import './Nav.css';
 
 class Nav extends Component {
 
-    // componentDidMount() {
-    //      this.findUser(); 
-    // }
+    componentDidMount() {
+         this.findUser(); 
+         console.log(this.props)
+    }
     
     logout = () => {
         axios.get('/api/logout').then(() => {

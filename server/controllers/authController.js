@@ -44,7 +44,7 @@ module.exports = {
     findUser: async (req, res) => {
         const db = req.app.get('db');
 
-        const foundUser = db.users.find_me([req.session.userid]);
-        res.status(200).send(foundUser[0]);
+        const foundUser = await db.users.find_me([req.session.userid]);
+        res.status(200).send(foundUser[0])
     }
 }
